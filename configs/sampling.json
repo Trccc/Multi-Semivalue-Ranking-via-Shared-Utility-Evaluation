@@ -1,0 +1,22 @@
+{
+  "run_name": "smoke_soug_adarank",
+  "dataset": "soug",
+  "method": "AdaRank",
+  "semivalues": [
+    "BT-1-1",
+    "BT-1-4",
+    "BT-4-1",
+    "BT-4-4",
+    "WBZ-01",
+    "WBZ-03",
+    "WBZ-05",
+    "WBZ-07",
+    "WBZ-09"
+  ],
+  "uep": 10,
+  "seed": 20260702,
+  "size_distribution": "ofaa",
+  "size_distribution_alpha": 0.0,
+  "boundary_mode": "exact",
+  "output_root": "outputs/sampling"
+}

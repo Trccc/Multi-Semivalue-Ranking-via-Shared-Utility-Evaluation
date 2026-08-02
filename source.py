@@ -1,14 +1,4 @@
-"""Core algorithms for shared multi-semivalue ranking.
-
-The main estimators are:
-
-- IncRank: include-side ranking proxy
-- ExcRank: exclude-side ranking proxy
-- StdRank: standardized fixed-weight combination
-- AdaRank: split-half stability-weighted combination
-
-The baseline estimators are OFA, OFA-S, GELS, WPERM, WSL, WSHAP, and SHAPIQ.
-"""
+"""Shared multi-semivalue ranking algorithms."""
 
 from __future__ import annotations
 
@@ -43,7 +33,7 @@ SEMIVALUE_SET = (
 
 
 def semivalue_to_param(name: str) -> dict:
-    """Convert a paper-facing semivalue name into parameters."""
+    """Convert a semivalue name into parameters."""
     if name == "SV":
         return {"kind": "SV"}
     if name == "BZ":
@@ -215,7 +205,7 @@ def coalition_size_distribution(
 
 
 class UtilityGame:
-    """Utility oracle for bundled SOUG data and simple tabular data valuation."""
+    """Utility oracle for bundled SOUG and tabular data valuation."""
 
     def __init__(
         self,
@@ -492,6 +482,7 @@ class SharedSamplerEstimator:
         semivalue: str | dict,
         *,
         size_distribution: str = "ofaa",
+        size_distribution_alpha: float = 0.0,
         semivalue_set: Iterable[str | dict] | None = None,
         boundary_mode: str = "none",
         empty_value: float | None = None,
@@ -514,6 +505,7 @@ class SharedSamplerEstimator:
             self.n_players,
             name=size_distribution,
             semivalues=semivalue_params,
+            alpha=size_distribution_alpha,
             low=low,
             high=high,
         )
@@ -600,7 +592,7 @@ class AdaRank(SharedSamplerEstimator):
         n_blocks: int = 2,
     ) -> AdaRankStatistics:
         if int(n_blocks) != 2:
-            raise ValueError("AdaRank uses the paper-facing two-fold split-half rule.")
+            raise ValueError("AdaRank requires two split-half folds.")
 
         fold_stats: list[SharedStatistics] = []
         if self.boundary_mode == "exact":

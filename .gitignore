@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+.env
+.env.*
+.envrc
+!.env.example
+
+# Build/package outputs
+build/
+dist/
+*.egg-info/
+*.whl
+
+# Local/editor files
+.vscode/
+.idea/
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Notebook/runtime artifacts
+.ipynb_checkpoints/
+.jupyter/
+.matplotlib/
+
+# Generated experiment outputs
+exp/
+outputs/
+logs/
+figures/*_n50_figure_*
+tmp/
+temp/
+
+data/*
+!data/original/
+!data/original/**
+!data/soug_n50/
+!data/soug_n50/**
+!data/breast_cancer_n50/
+!data/breast_cancer_n50/**
+!data/wine_n50/
+!data/wine_n50/**
